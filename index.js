@@ -344,6 +344,6 @@ app.get('/', (req, res) => {
     res.send('Hello Fahim mama!')
 })
 
-app.listen(port, () => {
+app.listen(process.env.PORT|| port, () => {
     console.log(`iam starting`)
 })
