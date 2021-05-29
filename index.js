@@ -318,6 +318,22 @@ client.connect(err => {
                 })
             })
 
+            app.get('/work/:Key', (req, res)=>{
+                const id = req.params.Key;
+
+                allWorkCollection.findOne({_id: ObjectId(id)})
+                .then(result=>{
+                    res.send(result)
+                })
+            } )
+
+            app.get('/someWork', (req, res) => {
+                allWorkCollection.find({}).limit(6)
+                .toArray((err, results)=> {
+                    res.send(results)
+                })
+            })
+
             app.delete('/allWorkDelete/:id', (req, res) => {
                 console.log(req.params.id);
                 allWorkCollection.deleteOne({_id: ObjectId(req.params.id)})
@@ -328,9 +344,6 @@ client.connect(err => {
 })
 
 // all work ends here
-
-
-
 
 
 
